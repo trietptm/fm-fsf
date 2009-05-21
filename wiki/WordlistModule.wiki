@@ -1,0 +1,17 @@
+#summary Wordlist Module
+#labels Phase-Support,modules
+
+Reads values from a file.
+
+= Options =
+
+File Path i.e. (c:\wordlist\list.txt)
+
+
+= Example =
+
+You can use the following command to find hidden directories.
+
+{{{
+fsf.exe -m wordlist -o "c:\wordlist\directories.txt" -h 404 http://example.com/[FUZZ]/
+}}}

@@ -9,7 +9,7 @@ FSF.exe -m wordlist -o "c:\wordlists\sqli.txt" -u http://www.example.com/sql.asp
 
 }}}
 
-= Fuzzing POST requests =
+= Fuzzing POST parameters =
 
 {{{
 

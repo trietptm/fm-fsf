@@ -1,0 +1,43 @@
+#summary Integer Module
+#labels Phase-Support,modules
+
+= Options =
+
+StartNumber-EndNumber[-Increaser] 
+
+= Example =
+
+1 to 1000
+
+{{{
+fsf.exe -m integer -o 1,1000 http://example.com/userid/[FUZZ]/
+}}}
+
+Output will be look like:
+
+{{{
+http://example.com/userid/1/
+http://example.com/userid/2/
+http://example.com/userid/3/
+.....
+}}}
+
+
+
+= Example 2 =
+
+1 to 100 increases by 20 
+
+{{{
+fsf.exe -m integer -o 0,100,20 http://example.com/list/?startindex=[FUZZ]
+}}}
+
+Output will be look like:
+
+{{{
+http://example.com/list/?startindex=0
+http://example.com/list/?startindex=20
+http://example.com/list/?startindex=40
+http://example.com/list/?startindex=60
+.....
+}}}

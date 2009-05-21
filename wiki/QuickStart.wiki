@@ -3,13 +3,12 @@
 
 = How to fuzz with a wordlist? =
 
-fsf.exe -m 
+{{{fsf.exe -m wordlist -o "c:\wordlists\sqli.txt" http://www.example.com/sql.asp?id=[FUZZ]}}}
 
 
 = What the hell is a plug-in based fuzzer? =
 
 Basically every attack type such as numeric, wordlist based is a separate DLL which implements IReader interface. This means you can write a new DLL in any .NET language then drop it do same folder and do a really complicated fuzzing.
-
 
 
 FSF ships with only 2 plug-ins (generally referred as modules).

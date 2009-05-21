@@ -13,5 +13,5 @@ File Path i.e. (c:\wordlist\list.txt)
 You can use the following command to find hidden directories.
 
 {{{
-FSF.exe -m wordlist -o "c:\wordlist\directories.txt" -h 404 http://example.com/[FUZZ]/
+FSF.exe -m wordlist -o "c:\wordlist\directories.txt" -h 404 -u http://example.com/[FUZZ]/
 }}}

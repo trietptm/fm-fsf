@@ -3,7 +3,19 @@
 
 = How to fuzz with a wordlist? =
 
-{{{FSF.exe -m wordlist -o "c:\wordlists\sqli.txt" -u http://www.example.com/sql.asp?id=[FUZZ]}}}
+{{{
+
+FSF.exe -m wordlist -o "c:\wordlists\sqli.txt" -u http://www.example.com/sql.asp?id=[FUZZ]
+
+}}}
+
+= POST Requests =
+
+{{{
+
+FSF.exe -m wordlist -o "c:\wordlists\sqli.txt" -u http://www.example.com/sql.asp  -p "id=[FUZZ]"
+
+}}}
 
 
 = What the hell is a plug-in based fuzzer? =

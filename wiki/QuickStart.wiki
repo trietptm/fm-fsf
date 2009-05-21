@@ -1,7 +1,7 @@
 #summary Start from here
 #labels Phase-Support
 
-= How to fuzz with a wordlist? =
+= Using a wordlist? =
 
 {{{
 
@@ -9,7 +9,7 @@ FSF.exe -m wordlist -o "c:\wordlists\sqli.txt" -u http://www.example.com/sql.asp
 
 }}}
 
-= POST Requests =
+= Fuzzing POST requests =
 
 {{{
 

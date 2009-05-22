@@ -12,8 +12,9 @@ Public Class Request
     Private Shared HTTPSettingsConfigured As Boolean = SetHttpSettings()
 
     Private Shared Function SetHttpSettings() As Boolean
-        'TODO: Can we extract these?
+#If Not MONO Then
         ServicePointManager.ServerCertificateValidationCallback = New Net.Security.RemoteCertificateValidationCallback(AddressOf ValidateCertificate)
+#End If
 
         Net.ServicePointManager.DefaultConnectionLimit = 20
         Net.ServicePointManager.UseNagleAlgorithm = True

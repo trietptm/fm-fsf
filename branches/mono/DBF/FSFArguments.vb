@@ -6,6 +6,7 @@ Imports FM.FSF.Plugin
 Imports CommandLine.Text
 Imports System.Text
 Imports System.Text.RegularExpressions
+Imports FM.FSF.Plugins
 
 ''' <summary>
 ''' Commandline parameters and settings stored in here
@@ -14,12 +15,26 @@ Imports System.Text.RegularExpressions
 Public Class FSFArguments
     Inherits CommandLineParser
 
+#If Not MONO Then
     ''' <summary>
     ''' Wordlist Plugins
     ''' </summary>
     ''' <remarks></remarks>
     <Import(GetType(IReader))> _
     Public FuzzingModules As IEnumerable(Of IReader)
+#Else
+    Public FuzzingModules As IEnumerable(Of IReader) = LoadModules()
+
+    Private Shared Function LoadModules() As List(Of IReader)
+        'TODO: Use normal loading wihtout MEF
+        Dim LoadedModules As New List(Of IReader)
+        LoadedModules.Add(New NumericReader.NumericList())
+        LoadedModules.Add(New Wordlist.Wordlist())
+        Return LoadedModules
+    End Function
+
+#End If
+
 
 #Region "Settings"
 
@@ -93,6 +108,7 @@ Public Class FSFArguments
     Public Sub New()
         MyBase.New()
 
+#If Not MONO Then
         'Load plugins
         'Dim PluginFolder As String = IO.Path.Combine(My.Application.Info.DirectoryPath, "Plugins")
         Dim PluginFolder As String = My.Application.Info.DirectoryPath
@@ -108,6 +124,7 @@ Public Class FSFArguments
         Catch ex As CompositionException
             Console.WriteLine(ex.ToString())
         End Try
+#End If
     End Sub
 
 #Region "Target"
@@ -130,7 +147,17 @@ Public Class FSFArguments
     ''' <remarks></remarks>
     Public ReadOnly Property AttackReader() As IReader
         Get
-            Return FuzzingModules.Single(Function(plugin) plugin.Name.ToLowerInvariant = _AttackType.ToLowerInvariant)
+            '#If Not MONO Then
+            '            Return FuzzingModules.Single(Function(plugin) plugin.Name.ToLowerInvariant = _AttackType.ToLowerInvariant)
+            '#Else
+            For Each AttackModule As IReader In Me.FuzzingModules
+                If AttackModule.Name.Equals(_AttackType, StringComparison.InvariantCultureIgnoreCase) Then
+                    Return AttackModule
+                End If
+            Next
+            '#End If
+
+            Throw New Exception("Couldn't find the module or module hasn't loaded")
         End Get
     End Property
 

@@ -3,6 +3,10 @@ Imports System.Net
 
 Public Module Helpers
 
+
+#If Not MONO Then
+
+
     ''' <summary>
     ''' Validates the certificates (accept any of them).
     ''' </summary>
@@ -15,6 +19,8 @@ Public Module Helpers
         'Accept any certificate
         Return True
     End Function
+
+#End If
 
     ''' <summary>
     ''' Parses the specified name.

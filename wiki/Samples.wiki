@@ -25,7 +25,9 @@ fsf.exe -u "http://code.google.com/hosting/search?q=php&filter=1&start=[FUZZ]" -
 }}}
 
 =Basic Auth Brute Forcing=
+{{{
 fsf.exe -u "http://example.com:8001/Basic-Auth/" --username [FUZZ] --password [FUZZ2] -m wordlist -o "C:\Wordlist\users.txt" -f
+}}}
 
 Usernames and passwords should ":" separated in the wordlist.
 

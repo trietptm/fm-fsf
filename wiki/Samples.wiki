@@ -38,3 +38,5 @@ user2:pass2
 }}}
 
 Same applies to all 2 parameter fuzzing attacks.
+
+Use `-h 401` to hide unsuccessful authentication attempts.

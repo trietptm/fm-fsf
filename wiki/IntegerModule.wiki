@@ -47,16 +47,18 @@ http://example.com/list/?startindex=60
 1 to 100 increases by 20 and pad numbers
 
 {{{
-FSF.exe -m integer -o 0-100-20-0000 -u http://example.com/list/?startindex=[FUZZ]
+FSF.exe -m integer -o 0-1000-1-0000 -u http://example.com/list/?startindex=[FUZZ]
 }}}
 
 Output will be look like:
 
 {{{
-http://example.com/list/?startindex=0000
-http://example.com/list/?startindex=0020
-http://example.com/list/?startindex=0040
-http://example.com/list/?startindex=0060
+http://example.com/list/?startindex=0001.pdf
+http://example.com/list/?startindex=0002.pdf
+http://example.com/list/?startindex=0003.pdf
+http://example.com/list/?startindex=0004.pdf
+.....
+http://example.com/list/?startindex=0124.pdf
 .....
 }}}
 
